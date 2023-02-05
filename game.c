@@ -37,14 +37,19 @@ int main(void)
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
+    int CircleX = 100;
+    int CircleY = 100;
+    bool CircleForward = true;
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
+        if (CircleX < screenWidth - 25) {
+            CircleX += 10;
+            CircleForward = true;
+        }
+        else CircleForward = false;
+        if (!CircleForward) CircleX -= 10;
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -54,7 +59,7 @@ int main(void)
 
             DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
             
-            DrawCircle(100, 100, 25, RED);
+            DrawCircle(CircleX, 100, 25, RED);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
